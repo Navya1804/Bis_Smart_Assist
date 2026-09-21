@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIS SmartAssist</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,12 +16,11 @@
       font-family: Arial, Helvetica, sans-serif;
       background: #f5f7fb;
       color: #1f2937;
+      min-height: 100vh;
     }
 
-    /* HEADER */
-
     header {
-      background: white;
+      background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
       padding: 20px 8%;
       display: flex;
@@ -37,6 +30,7 @@
 
     .logo {
       font-size: 38px;
+      line-height: 1;
     }
 
     header h1 {
@@ -48,15 +42,11 @@
       color: #6b7280;
     }
 
-    /* MAIN */
-
     .container {
       width: 90%;
       max-width: 1100px;
       margin: auto;
     }
-
-    /* HERO */
 
     .hero {
       padding: 55px 0 30px;
@@ -83,13 +73,12 @@
       line-height: 1.6;
     }
 
-    /* SEARCH */
-
-    .search-section {
-      background: white;
+    .search-section,
+    .assistant {
+      background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
     }
 
     .search-section h2 {
@@ -122,7 +111,7 @@
     .search-box button {
       border: none;
       background: #4f46e5;
-      color: white;
+      color: #ffffff;
       padding: 0 25px;
       border-radius: 10px;
       font-size: 16px;
@@ -132,8 +121,6 @@
     .search-box button:hover {
       opacity: 0.9;
     }
-
-    /* QUICK SEARCH */
 
     .quick-section {
       padding: 30px 0;
@@ -151,7 +138,7 @@
 
     .quick-buttons button {
       padding: 10px 17px;
-      background: white;
+      background: #ffffff;
       border: 1px solid #d1d5db;
       border-radius: 20px;
       cursor: pointer;
@@ -159,15 +146,6 @@
 
     .quick-buttons button:hover {
       background: #eef2ff;
-    }
-
-    /* ASSISTANT */
-
-    .assistant {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
 
     .assistant-title {
@@ -180,8 +158,6 @@
     .assistant-title span {
       font-size: 28px;
     }
-
-    /* EMPTY */
 
     .empty {
       text-align: center;
@@ -196,9 +172,8 @@
 
     .empty p {
       color: #6b7280;
+      line-height: 1.5;
     }
-
-    /* RESULT */
 
     .results {
       display: grid;
@@ -241,9 +216,8 @@
 
     .result-card li {
       margin-bottom: 7px;
+      line-height: 1.5;
     }
-
-    /* ERROR */
 
     .error {
       background: #fee2e2;
@@ -252,14 +226,10 @@
       border-radius: 10px;
     }
 
-    /* LOADING */
-
     .loading {
       text-align: center;
       padding: 25px;
     }
-
-    /* NOTICE */
 
     .notice {
       margin: 25px 0;
@@ -278,18 +248,13 @@
       line-height: 1.5;
     }
 
-    /* FOOTER */
-
     footer {
       text-align: center;
       padding: 30px;
       color: #6b7280;
     }
 
-    /* MOBILE */
-
     @media (max-width: 700px) {
-
       header {
         padding: 18px 5%;
       }
@@ -318,224 +283,115 @@
       .assistant {
         padding: 20px;
       }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-  <!-- HEADER -->
-
   <header>
-
-    <div class="logo">
-      🇮🇳
-    </div>
+    <div class="logo">🇮🇳</div>
 
     <div>
-
       <h1>BIS SmartAssist</h1>
-
-      <p>
-        AI-powered assistant for Indian Standards
-      </p>
-
+      <p>AI-powered assistant for Indian Standards</p>
     </div>
-
   </header>
-
-
-  <!-- MAIN -->
 
   <main class="container">
 
-
-    <!-- HERO -->
-
     <section class="hero">
+      <span class="prototype">● Prototype</span>
 
-      <span class="prototype">
-        ● Prototype
-      </span>
-
-      <h2>
-        BIS Standards & Services Assistant
-      </h2>
+      <h2>BIS Standards &amp; Services Assistant</h2>
 
       <p>
-        Ask questions about Indian Standards using simple
-        words and get relevant information quickly.
+        Ask questions about Indian Standards using simple words
+        and get relevant information quickly.
       </p>
-
     </section>
 
-
-    <!-- SEARCH -->
-
     <section class="search-section">
-
-      <h2>
-        Ask about Indian Standards
-      </h2>
+      <h2>Ask about Indian Standards</h2>
 
       <p>
-        Search BIS-related information using simple
-        questions and keywords.
+        Search BIS-related information using simple questions and keywords.
       </p>
 
-
       <div class="search-box">
-
         <input
           id="searchInput"
           type="text"
           placeholder="Try: helmet, food safety, electrical appliance..."
-        />
+          autocomplete="off"
+        >
 
-        <button onclick="searchBIS()">
-          Search
-        </button>
-
+        <button type="button" onclick="searchBIS()">Search</button>
       </div>
-
     </section>
-
-
-    <!-- QUICK SEARCH -->
 
     <section class="quick-section">
-
-      <h3>
-        Quick searches
-      </h3>
+      <h3>Quick searches</h3>
 
       <div class="quick-buttons">
-
-        <button onclick="quickSearch('helmet')">
-          Helmet
-        </button>
-
-        <button onclick="quickSearch('food')">
-          Food Safety
-        </button>
-
-        <button onclick="quickSearch('electrical')">
-          Electrical
-        </button>
-
-        <button onclick="quickSearch('toy')">
-          Toy Safety
-        </button>
-
-        <button onclick="quickSearch('water')">
-          Water Quality
-        </button>
-
-        <button onclick="quickSearch('construction')">
-          Construction
-        </button>
-
+        <button type="button" onclick="quickSearch('helmet')">Helmet</button>
+        <button type="button" onclick="quickSearch('food')">Food Safety</button>
+        <button type="button" onclick="quickSearch('electrical')">Electrical</button>
+        <button type="button" onclick="quickSearch('toy')">Toy Safety</button>
+        <button type="button" onclick="quickSearch('water')">Water Quality</button>
+        <button type="button" onclick="quickSearch('construction')">Construction</button>
       </div>
-
     </section>
-
-
-    <!-- ASSISTANT -->
 
     <section class="assistant">
-
       <div class="assistant-title">
-
-        <span>
-          🤖
-        </span>
-
-        <h2>
-          AI Assistant
-        </h2>
-
+        <span>🤖</span>
+        <h2>AI Assistant</h2>
       </div>
-
 
       <div id="output">
-
         <div class="empty">
-
-          <h3>
-            Search for BIS information
-          </h3>
-
+          <h3>Search for BIS information</h3>
           <p>
-            Try searching for helmet, food, electrical,
-            toy, construction or water.
+            Try searching for helmet, food, electrical, toy,
+            construction or water.
           </p>
-
         </div>
-
       </div>
-
     </section>
-
-
-    <!-- NOTICE -->
 
     <section class="notice">
-
-      <strong>
-        ℹ️ Prototype Knowledge Base
-      </strong>
+      <strong>ℹ️ Prototype Knowledge Base</strong>
 
       <p>
-        The current results are demonstration data
-        for the hackathon prototype. Verify current
-        requirements using official BIS sources before
-        making compliance or certification decisions.
+        The current results are demonstration data for the hackathon prototype.
+        Verify current requirements using official BIS sources before making
+        compliance or certification decisions.
       </p>
-
     </section>
-
 
   </main>
 
-
-  <!-- FOOTER -->
-
   <footer>
-
     BIS SmartAssist • Hackathon Prototype
-
   </footer>
 
-
-  <!-- JAVASCRIPT -->
-
   <script>
-
-    /*
-      BIS SMARTASSIST KNOWLEDGE BASE
-    */
-
     const BIS_DATA = [
-
       {
         keywords: [
           "helmet",
+          "helmets",
           "safety helmet",
-          "head protection"
+          "head protection",
+          "head safety",
+          "protective helmet"
         ],
-
         title: "Safety Helmets",
-
         standard: "IS 2925",
-
         category: "Protective Equipment",
-
         description:
           "Safety helmets are used to protect the head from falling objects and other workplace hazards.",
-
         requirements: [
           "Helmet should satisfy applicable BIS requirements.",
           "Proper head protection should be used in hazardous areas.",
@@ -543,23 +399,20 @@
         ]
       },
 
-
       {
         keywords: [
           "food",
+          "foods",
           "food safety",
-          "food product"
+          "food product",
+          "food products",
+          "food quality"
         ],
-
         title: "Food Safety",
-
         standard: "BIS Food Standards",
-
         category: "Food Safety",
-
         description:
           "BIS develops standards covering safety and quality requirements for various food products.",
-
         requirements: [
           "Food should meet applicable quality requirements.",
           "Packaging should protect the product from contamination.",
@@ -567,24 +420,20 @@
         ]
       },
 
-
       {
         keywords: [
           "electrical",
-          "electrical appliance",
           "electric",
-          "appliance"
+          "electrical appliance",
+          "electrical appliances",
+          "appliance",
+          "appliances"
         ],
-
         title: "Electrical Appliances",
-
         standard: "Applicable BIS Electrical Standards",
-
         category: "Electrical",
-
         description:
           "Electrical products may need to comply with applicable Indian Standards depending on the product.",
-
         requirements: [
           "Identify the applicable Indian Standard.",
           "Follow applicable safety requirements.",
@@ -592,23 +441,19 @@
         ]
       },
 
-
       {
         keywords: [
           "toy",
           "toys",
-          "toy safety"
+          "toy safety",
+          "children toy",
+          "child toy"
         ],
-
         title: "Toy Safety",
-
         standard: "IS 9873",
-
         category: "Toy Safety",
-
         description:
           "Indian Standards specify safety requirements for toys to reduce risks associated with their use.",
-
         requirements: [
           "Toys should satisfy applicable safety requirements.",
           "Materials and construction should meet applicable standards.",
@@ -616,23 +461,19 @@
         ]
       },
 
-
       {
         keywords: [
           "water",
           "drinking water",
-          "water quality"
+          "water quality",
+          "drinking",
+          "water safety"
         ],
-
         title: "Water Quality",
-
         standard: "Applicable BIS Drinking Water Standards",
-
         category: "Water Quality",
-
         description:
           "BIS standards provide requirements and guidance for different aspects of water quality.",
-
         requirements: [
           "Water quality should be tested using applicable methods.",
           "Relevant quality parameters should be checked.",
@@ -640,238 +481,146 @@
         ]
       },
 
-
       {
         keywords: [
           "construction",
           "building",
-          "construction material"
+          "construction material",
+          "building material",
+          "construction standards"
         ],
-
         title: "Construction Standards",
-
         standard: "Applicable BIS Construction Standards",
-
         category: "Construction",
-
         description:
           "BIS publishes standards covering materials, construction practices and structural requirements.",
-
         requirements: [
           "Use applicable Indian Standards for materials.",
           "Follow relevant construction requirements.",
           "Verify the latest applicable standard before implementation."
         ]
       }
-
     ];
 
-
-    /*
-      SEARCH FUNCTION
-    */
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .replace(/[^\w\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
 
     function searchBIS() {
+      const input = document.getElementById("searchInput");
+      const output = document.getElementById("output");
 
-      const input =
-        document.getElementById("searchInput");
-
-      const query =
-        input.value.toLowerCase().trim();
-
-
-      const output =
-        document.getElementById("output");
-
+      const query = normalizeText(input.value);
 
       if (!query) {
-
         output.innerHTML = `
-
           <div class="error">
-
             Please enter a search query.
-
           </div>
-
         `;
-
         return;
-
       }
 
-
-      /*
-        SHOW LOADING
-      */
-
       output.innerHTML = `
-
         <div class="loading">
-
           🔎 Searching BIS information...
-
         </div>
-
       `;
 
+      setTimeout(function () {
+        const results = BIS_DATA.filter(function (item) {
+          const searchableText = normalizeText(
+            item.keywords.join(" ") +
+            " " +
+            item.title +
+            " " +
+            item.category +
+            " " +
+            item.description
+          );
 
-      /*
-        Small delay for realistic UI
-      */
+          const queryWords = query.split(" ");
 
-      setTimeout(function() {
+          return (
+            item.keywords.some(function (keyword) {
+              const normalizedKeyword = normalizeText(keyword);
 
-        const results =
-          BIS_DATA.filter(function(item) {
-
-            const text =
-              item.keywords.join(" ") +
-              " " +
-              item.title +
-              " " +
-              item.category +
-              " " +
-              item.description;
-
-            return text
-              .toLowerCase()
-              .includes(query);
-
-          });
-
-
-        /*
-          NO RESULTS
-        */
+              return (
+                normalizedKeyword.includes(query) ||
+                query.includes(normalizedKeyword)
+              );
+            }) ||
+            queryWords.some(function (word) {
+              return word.length >= 3 && searchableText.includes(word);
+            })
+          );
+        });
 
         if (results.length === 0) {
-
           output.innerHTML = `
-
             <div class="empty">
-
-              <h3>
-                No matching information found
-              </h3>
-
+              <h3>No matching information found</h3>
               <p>
-                Try searching for:
-                helmet, food, electrical,
+                Try searching for helmet, food, electrical,
                 toy, water or construction.
               </p>
-
             </div>
-
           `;
-
           return;
-
         }
 
+        let html = '<div class="results">';
 
-        /*
-          DISPLAY RESULTS
-        */
-
-        let html = "";
-
-        results.forEach(function(item) {
-
+        results.forEach(function (item) {
           html += `
-
             <div class="result-card">
-
-              <h2>
-                ${item.title}
-              </h2>
+              <h2>${item.title}</h2>
 
               <div class="standard">
                 ${item.standard}
               </div>
 
               <p>
-                <strong>
-                  Category:
-                </strong>
-
+                <strong>Category:</strong>
                 ${item.category}
               </p>
 
-              <p>
-                ${item.description}
-              </p>
+              <p>${item.description}</p>
 
-              <h3>
-                Key Requirements
-              </h3>
+              <h3>Key Requirements</h3>
 
               <ul>
-
-                ${item.requirements.map(
-                  function(requirement) {
-
-                    return `
-                      <li>
-                        ${requirement}
-                      </li>
-                    `;
-
-                  }
-                ).join("")}
-
+                ${item.requirements.map(function (requirement) {
+                  return `<li>${requirement}</li>`;
+                }).join("")}
               </ul>
-
             </div>
-
           `;
-
         });
 
-
+        html += "</div>";
         output.innerHTML = html;
-
       }, 400);
-
     }
-
-
-    /*
-      QUICK SEARCH
-    */
 
     function quickSearch(text) {
-
-      document.getElementById(
-        "searchInput"
-      ).value = text;
-
+      document.getElementById("searchInput").value = text;
       searchBIS();
-
     }
 
-
-    /*
-      ENTER KEY SEARCH
-    */
-
-    document.getElementById(
-      "searchInput"
-    ).addEventListener(
+    document.getElementById("searchInput").addEventListener(
       "keydown",
-      function(event) {
-
+      function (event) {
         if (event.key === "Enter") {
-
           searchBIS();
-
         }
-
       }
     );
-
   </script>
-
 
 </body>
 </html>

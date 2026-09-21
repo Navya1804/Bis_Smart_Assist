@@ -1,0 +1,835 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BIS Intelligent Assistant</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #1d2939;
+}
+
+/* Header */
+header {
+    height: 70px;
+    background: #123b82;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    color: #123b82;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.logo h2 {
+    font-size: 20px;
+}
+
+.logo p {
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, #123b82, #1769aa);
+    color: white;
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.search-box {
+    max-width: 700px;
+    margin: 30px auto 0;
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 17px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.search-box button {
+    padding: 0 25px;
+    border: none;
+    background: #ffb703;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #f59e0b;
+}
+
+/* Main */
+.container {
+    width: 88%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 25px;
+    color: #123b82;
+}
+
+.section-title p {
+    margin-top: 5px;
+    color: #667085;
+}
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #123b82;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #667085;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Chat */
+.chat-section {
+    margin-top: 50px;
+}
+
+.chat-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.chat-header {
+    background: #123b82;
+    color: white;
+    padding: 18px 25px;
+}
+
+.chat-header h3 {
+    margin-bottom: 4px;
+}
+
+.chat-header p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.chat-body {
+    height: 380px;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8fafc;
+}
+
+.message {
+    max-width: 75%;
+    padding: 13px 16px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.bot {
+    background: white;
+    border: 1px solid #e4e7ec;
+}
+
+.user {
+    background: #1769aa;
+    color: white;
+    margin-left: auto;
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 0 22px;
+    border: none;
+    background: #123b82;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* Standards */
+.standards {
+    margin-top: 50px;
+}
+
+.standard-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.standard {
+    background: white;
+    padding: 22px;
+    border-left: 5px solid #1769aa;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.standard span {
+    display: inline-block;
+    background: #e8f1ff;
+    color: #123b82;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.standard h3 {
+    margin-bottom: 8px;
+}
+
+.standard p {
+    color: #667085;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    margin-top: 60px;
+    background: #102a56;
+    color: white;
+    padding: 35px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+footer p {
+    color: #cbd5e1;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .standard-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    nav {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .cards,
+    .standard-list {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        padding: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+
+    <div class="logo">
+        <div class="logo-circle">BIS</div>
+
+        <div>
+            <h2>BIS Intelligent Assistant</h2>
+            <p>Indian Standards & BIS Services</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#standards">Standards</a>
+        <a href="#assistant">AI Assistant</a>
+    </nav>
+
+</header>
+
+
+<!-- Hero -->
+<section class="hero" id="home">
+
+    <h1>AI-Powered BIS Assistant</h1>
+
+    <p>
+        Intelligent assistance for Indian Standards, BIS certification,
+        compliance, testing laboratories and consumer services.
+    </p>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Indian Standards, certification, products..."
+        >
+
+        <button onclick="searchStandards()">Search</button>
+
+    </div>
+
+</section>
+
+
+<!-- Services -->
+<div class="container" id="services">
+
+    <div class="section-title">
+
+        <h2>BIS Services</h2>
+
+        <p>
+            Explore services for industries, manufacturers and consumers.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card" onclick="serviceMessage('Standards Search')">
+
+            <div class="icon">📚</div>
+
+            <h3>Standards Search</h3>
+
+            <p>
+                Find Indian Standards and obtain information about
+                standards, requirements and specifications.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="serviceMessage('Certification')">
+
+            <div class="icon">🏭</div>
+
+            <h3>BIS Certification</h3>
+
+            <p>
+                Understand BIS certification, licensing and product
+                conformity requirements.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="serviceMessage('Laboratory')">
+
+            <div class="icon">🧪</div>
+
+            <h3>Testing Laboratories</h3>
+
+            <p>
+                Explore information related to testing laboratories
+                and product testing.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="serviceMessage('Consumer')">
+
+            <div class="icon">👤</div>
+
+            <h3>Consumer Services</h3>
+
+            <p>
+                Get guidance about product standards, quality marks
+                and consumer-related BIS services.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- AI Assistant -->
+<div class="container chat-section" id="assistant">
+
+    <div class="section-title">
+
+        <h2>🤖 AI Assistant</h2>
+
+        <p>
+            Ask questions about Indian Standards and BIS services.
+        </p>
+
+    </div>
+
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+
+            <h3>BIS AI Assistant</h3>
+
+            <p>Online • Standards & Certification Support</p>
+
+        </div>
+
+
+        <div class="chat-body" id="chatBody">
+
+            <div class="message bot">
+
+                👋 Hello! I am the BIS Intelligent Assistant.
+
+                <br><br>
+
+                You can ask me about:
+
+                <br>• Indian Standards
+                <br>• BIS Certification
+                <br>• Product requirements
+                <br>• Testing laboratories
+                <br>• Consumer services
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask your question..."
+                onkeypress="handleEnter(event)"
+            >
+
+            <button onclick="sendMessage()">Send</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Standards -->
+<div class="container standards" id="standards">
+
+    <div class="section-title">
+
+        <h2>Popular Standards</h2>
+
+        <p>Example standards available in this frontend demo.</p>
+
+    </div>
+
+
+    <div class="standard-list" id="standardList">
+
+        <div class="standard">
+
+            <span>IS 1234</span>
+
+            <h3>Product Safety</h3>
+
+            <p>
+                Example Indian Standard related to product safety
+                and quality requirements.
+            </p>
+
+        </div>
+
+
+        <div class="standard">
+
+            <span>IS 456</span>
+
+            <h3>Construction</h3>
+
+            <p>
+                Example standard information for construction
+                materials and engineering applications.
+            </p>
+
+        </div>
+
+
+        <div class="standard">
+
+            <span>IS 987</span>
+
+            <h3>Electrical Products</h3>
+
+            <p>
+                Example standard information related to electrical
+                products and safety requirements.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>BIS Intelligent Assistant</h3>
+
+            <p>
+                AI-powered interface for Indian Standards and BIS services.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>For Industries</h3>
+
+            <p>Standards</p>
+            <p>Certification</p>
+            <p>Testing</p>
+
+        </div>
+
+        <div>
+
+            <h3>For Consumers</h3>
+
+            <p>Product Information</p>
+            <p>Quality Information</p>
+            <p>Consumer Services</p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* Search */
+function searchStandards() {
+
+    const input = document.getElementById("searchInput");
+
+    const query = input.value.trim();
+
+    if (query === "") {
+
+        alert("Please enter something to search.");
+
+        return;
+
+    }
+
+    const list = document.getElementById("standardList");
+
+    list.innerHTML = `
+
+        <div class="standard">
+
+            <span>SEARCH RESULT</span>
+
+            <h3>${query}</h3>
+
+            <p>
+                Demo search result for "${query}".
+                A real BIS database can be connected here later.
+            </p>
+
+        </div>
+
+    `;
+
+    document
+        .getElementById("standards")
+        .scrollIntoView({ behavior: "smooth" });
+
+}
+
+
+/* Service cards */
+function serviceMessage(service) {
+
+    const chatBody = document.getElementById("chatBody");
+
+    chatBody.innerHTML += `
+
+        <div class="message user">
+
+            I want information about ${service}.
+
+        </div>
+
+        <div class="message bot">
+
+            📘 I can provide information about <b>${service}</b>.
+
+            <br><br>
+
+            This is currently a frontend demo.
+            A backend and BIS knowledge database can be
+            connected later.
+
+        </div>
+
+    `;
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+}
+
+
+/* Send Chat */
+function sendMessage() {
+
+    const input = document.getElementById("chatInput");
+
+    const message = input.value.trim();
+
+    if (message === "") {
+
+        return;
+
+    }
+
+    const chatBody = document.getElementById("chatBody");
+
+
+    chatBody.innerHTML += `
+
+        <div class="message user">
+
+            ${message}
+
+        </div>
+
+    `;
+
+
+    let response =
+        "I can help you with Indian Standards, BIS certification, testing laboratories and consumer services.";
+
+
+    const lower = message.toLowerCase();
+
+
+    if (
+        lower.includes("certificate") ||
+        lower.includes("certification")
+    ) {
+
+        response =
+            "BIS certification is used to demonstrate conformity of applicable products with relevant Indian Standards. The exact process depends on the product and applicable scheme.";
+
+    }
+
+    else if (
+        lower.includes("standard") ||
+        lower.includes("is ")
+    ) {
+
+        response =
+            "Indian Standards specify requirements, specifications, testing methods or guidelines for products, services and processes. Please provide the product name or IS number for a more specific search.";
+
+    }
+
+    else if (
+        lower.includes("consumer") ||
+        lower.includes("consumer complaint")
+    ) {
+
+        response =
+            "Consumers can use BIS services to obtain information about product quality, standards, certification and applicable consumer-related services.";
+
+    }
+
+    else if (
+        lower.includes("laboratory") ||
+        lower.includes("lab") ||
+        lower.includes("testing")
+    ) {
+
+        response =
+            "BIS-related testing information can help identify applicable testing requirements and laboratories for products.";
+
+    }
+
+
+    setTimeout(function() {
+
+        chatBody.innerHTML += `
+
+            <div class="message bot">
+
+                ${response}
+
+            </div>
+
+        `;
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+    }, 500);
+
+
+    input.value = "";
+
+}
+
+
+/* Enter key */
+function handleEnter(event) {
+
+    if (event.key === "Enter") {
+
+        sendMessage();
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
